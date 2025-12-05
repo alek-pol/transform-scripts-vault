@@ -3,5 +3,5 @@ if (!CONTEXT['success']) {
 }
 
 return {
-  "listOrgs" : DATA.unf_list_Catalog_Организации
+  "listOrgs": DATA["unf_list_Catalog_Организации"]
 };

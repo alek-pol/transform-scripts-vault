@@ -1,0 +1,6 @@
+// Request transformation
+return {
+  "ca_list_Catalog_Организации": {
+    "$select": "Ref_Key,Description,ИНН"
+  }
+};
