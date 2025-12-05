@@ -62,7 +62,7 @@ scripts/
 
 **Пример:**
 
-- scripts/organizations/unf_v_list_organizations_response.js — скрипт, который трансформирует ответ от УНФ при запросе
+- scripts/organizations/unf_v_list_partners_response.js — скрипт, который трансформирует ответ от УНФ при запросе
   списка организаций.
 
 **Примечание:**
