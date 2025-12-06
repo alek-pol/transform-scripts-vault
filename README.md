@@ -149,7 +149,8 @@ node tools/generate.js \
   --action <action_base> \
   --type <list|get|create|update|delete> \
   [--proxy] \
-  [--output-key <custom_key>]
+  [--output-key <name>]
+  [--input-operation <name>]
   ```
 
 **Параметры**
@@ -160,6 +161,7 @@ node tools/generate.js \
 * `--type` - Тип операции: list, get, create, update, delete.
 * `--proxy`- Добавляет суффикс _v в имя скрипта и inputKey (для виртуальных трансформаций).
 * `--output-key` - Явно задаёт имя выходного поля (по умолчанию: list_organizations → organizations).
+* `--input-operation` - Задаёт имя входного поля
 
 ### Примеры
 

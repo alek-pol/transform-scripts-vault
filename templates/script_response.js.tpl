@@ -1,5 +1,5 @@
 // {{scriptName}}_response.js
 
-return CONTEXT['success']
+return CONTEXT.success
   ? { "{{outputKey}}": DATA["{{inputKey}}"] }
   : DATA;

@@ -18,12 +18,12 @@ Options:
   --action <name>       Action base name (e.g., organizations)
   --type <list|get|create|update|delete>  Operation type (default: list)
   --proxy               Add "_v" suffix in script name and inputKey
-  --output-key <name>   Custom output key (e.g., "currentDocument")
+  --output-key <name>   Custom output key (e.g., "listDocuments")
+  --input-operation <name>    Input operation key (e.g., "Document_ПеремещениеТоваров")
 
 Examples:
-  node tools/generate.js --group organizations --platform unf --action organizations --type list
-  node tools/generate.js --group documents --platform all --action production --type get --proxy
-  node tools/generate.js --group vhs --platform ca --action vh --type list --proxy --output-key vhsList
+  node tools/generate.js --group organizations --platform unf --action organizations --type list --input-operation Catalog_Организации
+  node tools/generate.js --group documents --platform all --action production --type get --input-operation Document_СборкаЗапасов --proxy 
 `);
   process.exit(1);
 }
@@ -70,12 +70,13 @@ function main() {
 
   const group = opts.group;
   const platformInput = opts.platform;
-  const actionBase = opts.action;
+  const actionBase = opts.action || opts.group;
   const type = opts.type || 'list';
-  const isProxy = opts.proxy !== undefined;
   const customOutputKey = opts['output-key'];
+  const inputOperation = opts['input-operation'];
+  const isProxy = opts.proxy !== undefined;
 
-  if (!group || !platformInput || !actionBase) {
+  if (!group || !platformInput || !actionBase || !inputOperation) {
     console.error('Error: Missing required arguments');
     usage();
   }
@@ -95,16 +96,17 @@ function main() {
     process.exit(1);
   }
 
-  const actionName = type === 'list' ? `list_${actionBase}` : `${type}_${actionBase}`;
+  // const actionName = type === 'list' ? `list_${actionBase}` : `${type}_${actionBase}`;
   const outputKey = customOutputKey || (type === 'list' ? getPluralForm(actionBase) : actionBase);
 
   for (const plat of platforms) {
     const platformPart = isProxy ? `${plat}_v` : plat;
-    const scriptName = `${platformPart}_${actionName}`;
-    const inputKey = isProxy ? `${plat}_v_${actionName}` : `${plat}_${actionName}`;
+    const scriptName = `${platformPart}_${type}_${actionBase}`;
+    const inputKey = `${plat}_${type}_${inputOperation}`;
 
     const vars = {
       group,
+      platformPart,
       platform: plat,
       action: actionBase,
       type,
@@ -141,7 +143,7 @@ function main() {
       const fixtureDir = path.join(fixtureBase, direction);
       ensureDir(fixtureDir);
 
-      for (const file of ['DATA.json', 'CONTEXT.json', 'expected.DATA.json']) {
+      for (const file of ['DATA.json', 'expected.DATA.json']) {
         const tplFile = path.join(__dirname, '..', 'templates', 'fixture', direction, `${file}.tpl`);
         let content = '{}';
         if (fs.existsSync(tplFile)) {

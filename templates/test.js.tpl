@@ -1,6 +1,6 @@
 const {loadFixture, scriptPath, runTransformScript} = require('../../support/transformHelper');
 
-describe('ca_v_list_partners.js', () => {
+describe('{{platformPart}}_{{type}}_{{action}}.js', () => {
   const group = '{{group}}';
   const scriptName = '{{scriptName}}';
 
@@ -13,8 +13,7 @@ describe('ca_v_list_partners.js', () => {
   });
 
   describe('response transformation', () => {
-    it('maps to unified listOrgs format', () => {
-
+    it('maps to unified {{outputKey}} format', () => {
       const {DATA, CONTEXT, expected} = loadFixture(group, scriptName, 'response');
       const result = runTransformScript(scriptPath(group, scriptName, 'response'), DATA, CONTEXT);
       expect(result.DATA).toEqual(expected);
