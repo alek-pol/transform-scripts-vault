@@ -1,4 +1,4 @@
-if (!CONTEXT['success']) {
+if (!CONTEXT.success) {
   return DATA;
 }
 
