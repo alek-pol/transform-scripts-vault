@@ -1,0 +1,8 @@
+{
+  "unf_list_Catalog_КлассификаторЕдиницИзмерения": {
+    "$select": "Ref_Key,Description,НаименованиеПолное"
+  },
+  "unf_list_Catalog_ЕдиницыИзмерения": {
+    "$select": "Ref_Key,Description"
+  }
+}

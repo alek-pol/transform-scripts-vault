@@ -1,0 +1,16 @@
+{
+  "listUnits": [
+    {
+      "Ref_Key": "c23de3e2-cc0d-11e5-9653-3085a93ddca2",
+      "Description": "кг",
+      "НаименованиеПолное": "Килограмм",
+      "type": "base"
+    },
+    {
+      "Ref_Key": "c23de3e3-cc0d-11e5-9653-3085a93ddca2",
+      "Description": "шт",
+      "НаименованиеПолное": "Штука",
+      "type": "base"
+    }
+  ]
+}
