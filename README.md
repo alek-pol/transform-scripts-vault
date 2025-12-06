@@ -133,6 +133,58 @@ npm install
 // TODO: аналогично в ca_v_list_organizations.js — обновить при изменении
 ```
 
+## Шаблоны
+
+Для ускорения создания новых трансформаций предусмотрен механизм шаблонов, который автоматически генерирует:
+
+- скрипты трансформации запроса и ответа,
+- тесты на Jest (в RSpec-стиле),
+- фикстуры (DATA.json, expected.DATA.json) для request и response.
+### Команда генерации
+
+```bash
+node tools/generate.js \
+  --group <group> \
+  --platform <unf|ca|erp|ut|ea|all> \
+  --action <action_base> \
+  --type <list|get|create|update|delete> \
+  [--proxy] \
+  [--output-key <custom_key>]
+  ```
+
+**Параметры**
+
+* `--group` - Бизнес-сущность: organizations, nomenclature, production и т.д.
+* `--platform` - Целевая платформа 1С (unf, ca, erp, ut, ea) или all для генерации под все платформы.
+* `--action` - Базовое имя действия, например organizations, items.
+* `--type` - Тип операции: list, get, create, update, delete.
+* `--proxy`- Добавляет суффикс _v в имя скрипта и inputKey (для виртуальных трансформаций).
+* `--output-key` - Явно задаёт имя выходного поля (по умолчанию: list_organizations → organizations).
+
+### Примеры
+
+```bash
+# Создать трансформации для списка организаций на всех платформах (виртуальные)
+node tools/generate.js --group organizations --platform all --action organizations --type list --proxy
+
+# Создать get-трансформацию для документа на УТ
+node tools/generate.js --group documents --platform ut --action production --type get --output-key currentDocument
+```
+
+### Структура шаблонов
+
+**Шаблоны хранятся в папке `templates/:`**
+
+```bash
+templates/
+├── script_request.js.tpl
+├── script_response.js.tpl
+├── test.js.tpl
+└── fixture/
+    ├── request/
+    └── response/
+```
+
 ## Зависимости
 
 - Node.js ≥18 (ES Modules)
@@ -143,3 +195,4 @@ npm install
 
 - `jest.config.js` — настройка тестового окружения
 - `eslint.config.js` — правила линтинга (включая игнорирование каталога scripts/)
+
