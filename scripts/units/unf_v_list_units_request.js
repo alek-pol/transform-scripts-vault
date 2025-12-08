@@ -5,14 +5,13 @@ const params = {
 };
 
 const paramsCustom = {
-  "$select": "Ref_Key,Description"
+  "$select": "Ref_Key,Description,ЕдиницаИзмеренияВладельца_Key,Коэффициент"
 };
 
 if (typeof DATA["$filter"] === 'string') {
   params["$filter"] = DATA["$filter"];
   paramsCustom["$filter"] = DATA["$filter"];
 }
-
 
 return {
   "unf_list_Catalog_КлассификаторЕдиницИзмерения": params,

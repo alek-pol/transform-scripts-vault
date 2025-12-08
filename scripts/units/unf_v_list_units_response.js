@@ -6,7 +6,9 @@ if (!CONTEXT.success) {
 
 const processedUnits = (DATA["unf_list_Catalog_КлассификаторЕдиницИзмерения"] || []).map(unit => ({
   ...unit,
-  type: "base"
+  type: "base",
+  "ЕдиницаИзмеренияВладельца_Key": "00000000-0000-0000-0000-000000000000",
+  "Коэффициент": 0
 }));
 
 const processedCustomUnits = (DATA["unf_list_Catalog_ЕдиницыИзмерения"] || []).map(unit => ({
@@ -16,5 +18,5 @@ const processedCustomUnits = (DATA["unf_list_Catalog_ЕдиницыИзмере�
 }));
 
 return {
-  listUnits: [...processedUnits, ...processedCustomUnits]
+  "listUnits": [...processedUnits, ...processedCustomUnits]
 };
