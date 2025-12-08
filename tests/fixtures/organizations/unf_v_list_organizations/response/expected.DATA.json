@@ -3,6 +3,7 @@
     {
       "ИНН": "3900000000",
       "Ref_Key": "07770777-0777-0777-0777-077707770777",
+      "type": "organization",
       "Description": "CodeCraft"
     }
   ]
