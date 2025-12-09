@@ -1,0 +1,7 @@
+{
+  "ut_list_Catalog_Контрагенты_КонтактнаяИнформация": {
+    "$expand": "Вид",
+    "$filter": "Тип eq 'Адрес'",
+    "$select": "Ref_Key,Представление,Вид/PredefinedDataName"
+  }
+}
