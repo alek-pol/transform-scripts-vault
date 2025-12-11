@@ -1,0 +1,6 @@
+{
+  "ca_list_Catalog_Пользователи": {
+    "$filter": "Служебный eq false",
+    "$select": "Description,Ref_Key"
+  }
+}
