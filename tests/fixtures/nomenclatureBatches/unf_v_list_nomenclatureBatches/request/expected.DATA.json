@@ -1,0 +1,5 @@
+{
+  "unf_list_Catalog_ПартииНоменклатуры": {
+    "$select": "Ref_Key,Description"
+  }
+}
