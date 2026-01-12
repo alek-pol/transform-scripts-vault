@@ -1,1 +1,6 @@
-{}
+{
+  "ut_list_Catalog_ТранспортныеСредства": {
+    "$expand": "Тип",
+    "$select": "Ref_Key,Code,Description,DeletionMark,Тип/Description"
+  }
+}

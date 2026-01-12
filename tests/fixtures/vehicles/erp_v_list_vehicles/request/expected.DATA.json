@@ -1,5 +1,6 @@
 {
   "erp_list_Catalog_ТранспортныеСредства": {
-    "$select": "Ref_Key,Code,Description"
+    "$expand": "Тип",
+    "$select": "Ref_Key,Code,Description,DeletionMark,Тип/Description"
   }
 }

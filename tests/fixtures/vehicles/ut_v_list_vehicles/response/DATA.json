@@ -1,3 +1,14 @@
 {
-
+  "ut_list_Catalog_ТранспортныеСредства": [
+    {
+      "Code": "Е116ВЕ779",
+      "Тип": {
+        "Description": "Автомобиль"
+      },
+      "Ref_Key": "e91f8030-d4ce-11f0-917c-00155d0ad303",
+      "Description": "Е116ВЕ779 Ларгус",
+      "DeletionMark": false,
+      "Тип@navigationLinkUrl": "Catalog_ТранспортныеСредства(guid'e91f8030-d4ce-11f0-917c-00155d0ad303')/Тип"
+    }
+  ]
 }

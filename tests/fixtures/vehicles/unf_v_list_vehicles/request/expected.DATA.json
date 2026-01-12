@@ -1,5 +1,5 @@
 {
   "unf_list_Catalog_ТранспортныеСредства": {
-    "$select": "Ref_Key,Code,Description"
+    "$select": "Ref_Key,Code,Description,DeletionMark,ВидТранспортногоСредства"
   }
 }
