@@ -1,7 +1,7 @@
 // ea_v_list_units_request.js
 
 const params = {
-  "$select": "Ref_Key,Description,НаименованиеПолное"
+  "$select": "Ref_Key,Description,НаименованиеПолное,DeletionMark"
 };
 
 if (typeof DATA["$filter"] === 'string') {

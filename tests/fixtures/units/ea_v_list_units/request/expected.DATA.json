@@ -1,5 +1,5 @@
 {
   "ea_list_Catalog_КлассификаторЕдиницИзмерения": {
-    "$select": "Ref_Key,Description,НаименованиеПолное"
+    "$select": "Ref_Key,Description,НаименованиеПолное,DeletionMark"
   }
 }
