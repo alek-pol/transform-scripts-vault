@@ -2,7 +2,7 @@
 
 const params = {
   "$filter": "Служебный eq false",
-  "$select": "Description,Ref_Key"
+  "$select": "Description,Ref_Key,DeletionMark"
 }
 
 if (typeof DATA["$filter"] === 'string') {
