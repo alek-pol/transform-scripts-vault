@@ -1,7 +1,18 @@
-// Request transformation
-return {
-  "ea_list_Catalog_Контрагенты": {
-    "$filter": "ИНН ne ''",
-    "$select": "Ref_Key,Description,ИНН,DeletionMark"
+// ea_v_list_partners_request.js
+
+const params = {};
+
+if (DATA.processName === "front"){
+  for (const key of ["$filter", "$expand", "$select"]) {
+    if (key in DATA) {
+      params[key] = DATA[key];
+    }
   }
+} else {
+  params["$filter"] = "ИНН ne ''"
+  params["$select"] = "Ref_Key,Description,ИНН,DeletionMark"
+}
+
+return {
+  "ea_list_Catalog_Контрагенты": params
 };
