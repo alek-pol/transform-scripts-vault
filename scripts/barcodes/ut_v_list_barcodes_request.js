@@ -1,7 +1,7 @@
 // ut_v_list_barcodes_request.js
 
 const params = {
-  "$select": "Номенклатура_Key,ЗначениеШтрихкода"
+  "$select": "Ref_Key,Номенклатура_Key,ЗначениеШтрихкода"
 };
 
 if (typeof DATA["$filter"] === 'string') {
@@ -13,5 +13,5 @@ if (typeof DATA["$filter"] === 'string') {
 }
 
 return {
-  "ut_Catalog_НоменклатураКонтрагентов_ДругиеШтрихкодыНоменклатуры": params
+  "ut_list_Catalog_НоменклатураКонтрагентов_ДругиеШтрихкодыНоменклатуры": params
 };
