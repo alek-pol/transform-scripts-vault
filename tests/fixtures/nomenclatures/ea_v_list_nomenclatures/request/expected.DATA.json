@@ -1,0 +1,7 @@
+{
+  "ea_list_Catalog_Номенклатура": {
+    "$expand": "ЕдиницаИзмерения",
+    "$filter": "Ref_Key eq guid'6b30060a-9528-11ef-8273-fa163e41a366'",
+    "$select": "Ref_Key,Description,ПодконтрольнаяПродукцияВЕТИС,ЕдиницаИзмерения/Description,ЕдиницаИзмерения_Key"
+  }
+}

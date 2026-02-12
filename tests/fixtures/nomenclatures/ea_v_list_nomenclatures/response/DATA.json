@@ -1,0 +1,21 @@
+{
+  "ea_list_Catalog_Номенклатура": [
+    {
+      "Code": "00-00000006",
+      "Parent": {
+        "Description": "Готовая продукция"
+      },
+      "Ref_Key": "8a276de4-ce58-11e5-982d-14dae9b19a48",
+      "Description": "Говядина охлажденная  ",
+      "DeletionMark": false,
+      "Артикул": "",
+      "Parent@navigationLinkUrl": "Catalog_Номенклатура(guid'8a276de4-ce58-11e5-982d-14dae9b19a48')/Parent",
+      "ЕдиницаИзмерения": {
+        "Description": "шт"
+      },
+      "ЕдиницаИзмерения_Key": "c23de3e3-cc0d-11e5-9653-3085a93ddca2",
+      "ЕдиницаИзмерения@navigationLinkUrl": "Catalog_Номенклатура(guid'8a276de4-ce58-11e5-982d-14dae9b19a48')/ЕдиницаИзмерения",
+      "ПодконтрольнаяПродукцияВЕТИС": false
+    }
+  ]
+}
