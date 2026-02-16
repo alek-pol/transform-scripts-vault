@@ -5,13 +5,24 @@ if (!CONTEXT.success) {
 }
 
 const batches = (DATA["ut_list_Catalog_СерииНоменклатуры"] || []).map(item => {
-  if (item && typeof item === 'object' && "ГоденДо" in item) {
-    return {
-      ...item,
-      "Owner_Key": "00000000-0000-0000-0000-000000000000"
-    };
+  if (!item || typeof item !== 'object') {
+    return item;
   }
-  return item;
+
+  const newItem = { ...item };
+
+  if (typeof newItem["Description"] === 'string') {
+    const idx = newItem["Description"].indexOf(" до");
+    if (idx !== -1) {
+      newItem["Description"] = newItem["Description"].substring(0, idx);
+    }
+  }
+
+  if ("ГоденДо" in newItem) {
+    newItem["Owner_Key"] = "00000000-0000-0000-0000-000000000000";
+  }
+
+  return newItem;
 });
 
 return { "listBatches": batches };
