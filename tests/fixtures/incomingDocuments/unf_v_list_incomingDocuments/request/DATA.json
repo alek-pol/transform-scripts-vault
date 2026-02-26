@@ -1,0 +1,3 @@
+{
+  "$filter": "Posted eq true and (Контрагент_Key eq guid'73b67934-cfd6-11ee-874f-fa163e41a366' or Контрагент_Key eq guid'df05bf7e-9c4a-11ef-83d2-fa163e41a366') and НомерВходящегоДокумента eq '999' and ДатаВходящегоДокумента eq datetime'2026-01-16T00:00:00'"
+}
