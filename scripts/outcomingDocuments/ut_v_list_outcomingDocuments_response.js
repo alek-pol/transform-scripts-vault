@@ -1,8 +1,7 @@
 // ut_v_list_outcomingDocuments_response.js
 
 // Поле Товары/СтатусУказанияСерий:
-// 0 — серия не требуется (или не указана),
-// 2 — требуется указание серий (и они указаны в табличной части Серии).
+// 0 — серия не требуется (или не указана)
 
 if (!CONTEXT.success) {
   return DATA;
@@ -46,7 +45,7 @@ const linkItemsWithBatches = (doc, docType) => {
     renameKey(baseItem, "Упаковка_Key", "ЕдиницаИзмерения");
 
     // Если серии не требуются
-    if (item["СтатусУказанияСерий"] !== 2) {
+    if (item["СтатусУказанияСерий"] === 0) {
       return [{ ...baseItem, "Партия_Key": "00000000-0000-0000-0000-000000000000" }];
     }
 
@@ -106,8 +105,8 @@ const processDocument = (doc, docType) => {
 
   if (deliveryMethodsRequiringVehicle.includes(doc["СпособДоставки"])) {
     const task = transportTasks.find(t => Array
-        .isArray(t["Распоряжения"]) && t["Распоряжения"]
-        .some(r => r["Распоряжение"] === doc["Ref_Key"])
+      .isArray(t["Распоряжения"]) && t["Распоряжения"]
+      .some(r => r["Распоряжение"] === doc["Ref_Key"])
     );
 
     if (task && task["ТранспортноеСредство"]) {
@@ -140,7 +139,6 @@ const movements = (DATA["ut_list_Document_ПеремещениеТоваров"]
   const docCopy = JSON.parse(JSON.stringify(doc));
   processDocument(docCopy, "Перемещение");
   docCopy["ВидОперации"] = "Перемещение"
-
   return docCopy;
 });
 
