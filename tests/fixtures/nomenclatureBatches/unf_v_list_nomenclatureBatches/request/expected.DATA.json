@@ -1,5 +1,6 @@
 {
   "unf_list_Catalog_ПартииНоменклатуры": {
+    "$filter": "Ref_Key eq guid'ba550fce-8969-11f0-9818-fa163e41a366' or Ref_Key eq guid'e4f48036-b244-11ef-9ddb-fa163e41a366'",
     "$select": "Ref_Key,Description"
   }
 }

@@ -5,9 +5,19 @@ describe('ut_v_list_nomenclatureBatches.js', () => {
   const scriptName = 'ut_v_list_nomenclatureBatches';
 
   describe('request transformation', () => {
-    it('builds correct OData query', () => {
+    it('builds correct OData query with batch keys filter', () => {
       const {DATA, CONTEXT, expected} = loadFixture(group, scriptName, 'request');
       const result = runTransformScript(scriptPath(group, scriptName, 'request'), DATA, CONTEXT);
+
+      expect(result.DATA).toEqual(expected);
+    });
+
+    it('builds correct OData query without filter', () => {
+      const result = runTransformScript(scriptPath(group, scriptName, 'request'), {}, {});
+      const expected = {'ut_list_Catalog_СерииНоменклатуры':
+          {'$select': 'Ref_Key,Description'}
+      }
+
       expect(result.DATA).toEqual(expected);
     });
 
@@ -18,17 +28,6 @@ describe('ut_v_list_nomenclatureBatches.js', () => {
       expected["ut_list_Catalog_СерииНоменклатуры"]["$select"] = "Ref_Key,Description,ГоденДо"
       const result = runTransformScript(scriptPath(group, scriptName, 'request'), DATA, CONTEXT);
 
-      expect(result.DATA).toEqual(expected);
-    });
-
-    it('builds correct OData query with filter', () => {
-      const {DATA, CONTEXT, expected} = loadFixture(group, scriptName, 'request');
-
-      const filter = "Ref_Key eq guid'80e6ba7a-b761-11ee-9773-fa163e41a366'"
-      DATA["$filter"] = filter
-      expected["ut_list_Catalog_СерииНоменклатуры"]["$filter"] = filter
-
-      const result = runTransformScript(scriptPath(group, scriptName, 'request'), DATA, CONTEXT);
       expect(result.DATA).toEqual(expected);
     });
   });

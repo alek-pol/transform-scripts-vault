@@ -1,5 +1,6 @@
 {
   "ut_list_Catalog_СерииНоменклатуры": {
+    "$filter": "Ref_Key eq guid'd8a854f6-c12b-11ef-97c3-fa163e41a366' or Ref_Key eq guid'b50c9a05-d5c6-11f0-917c-00155d0ad303'",
     "$select": "Ref_Key,Description"
   }
 }
